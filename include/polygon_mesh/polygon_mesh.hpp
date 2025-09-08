@@ -19,6 +19,9 @@
 // File I/O modules
 #include <polygon_mesh/io/io.hpp>
 
+// Generator modules
+#include <polygon_mesh/generators/primitives.hpp>
+
 // Utility modules
 #include <polygon_mesh/utils/utils.hpp>
 

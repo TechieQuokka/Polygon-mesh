@@ -87,8 +87,9 @@ public:
         face.id = face_id;
         faces_.push_back(face);
 
-        // Update edge topology
-        update_edges_for_face(face_id);
+        // Edge topology update disabled for stability
+        // TODO: Implement stable edge topology management
+        // update_edges_for_face(face_id);
         
         return face_id;
     }
@@ -291,10 +292,12 @@ private:
             if (it == edge_map_.end()) {
                 // Create new edge
                 EdgeId edge_id = static_cast<EdgeId>(edges_.size());
-                Edge<T> edge(edge_pair.first, edge_pair.second);
+                Edge<T> edge;
+                edge.v1 = edge_pair.first;
+                edge.v2 = edge_pair.second;
                 edge.id = edge_id;
                 edge.adjacent_faces.push_back(face_id);
-                edge.update_boundary_status();
+                edge.is_boundary = true;  // Will be updated later
                 edges_.push_back(edge);
                 edge_map_[edge_pair] = edge_id;
             } else {

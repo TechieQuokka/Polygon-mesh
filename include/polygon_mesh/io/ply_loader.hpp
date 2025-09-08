@@ -89,23 +89,27 @@ public:
     template<typename T>
     static bool save(const std::string& filepath, const core::Mesh<T>& mesh, 
                      Format format = Format::ASCII) {
-        std::ofstream file(filepath, format == Format::ASCII ? 
-                          std::ios::out : std::ios::binary);
-        if (!file.is_open()) {
+        try {
+            std::ofstream file(filepath, format == Format::ASCII ? 
+                              std::ios::out : std::ios::binary);
+            if (!file.is_open()) {
+                return false;
+            }
+
+            // Write header
+            write_header(file, mesh, format);
+
+            // Write data
+            if (format == Format::ASCII) {
+                write_ascii_data(file, mesh);
+            } else {
+                write_binary_data(file, mesh, format);
+            }
+
+            return true;
+        } catch (const std::exception&) {
             return false;
         }
-
-        // Write header
-        write_header(file, mesh, format);
-
-        // Write data
-        if (format == Format::ASCII) {
-            write_ascii_data(file, mesh);
-        } else {
-            write_binary_data(file, mesh, format);
-        }
-
-        return true;
     }
 
 private:
@@ -114,8 +118,16 @@ private:
         std::string line;
         
         // Check magic number
-        if (!std::getline(file, line) || line != "ply") {
-            throw std::runtime_error("Invalid PLY file format");
+        if (!std::getline(file, line)) {
+            throw std::runtime_error("Failed to read PLY file");
+        }
+        
+        // Trim whitespace from line
+        line.erase(0, line.find_first_not_of(" \t\r\n"));
+        line.erase(line.find_last_not_of(" \t\r\n") + 1);
+        
+        if (line != "ply") {
+            throw std::runtime_error("Invalid PLY file format - expected 'ply', got: '" + line + "'");
         }
 
         while (std::getline(file, line)) {
@@ -148,13 +160,15 @@ private:
             else if (command == "property") {
                 if (elements.empty()) continue;
                 
-                std::string type_or_list, type, name;
+                std::string type_or_list;
                 iss >> type_or_list;
                 
                 if (type_or_list == "list") {
-                    iss >> type >> type >> name; // count_type, data_type, name
-                    elements.back().properties.push_back({name, type, true, type});
+                    std::string count_type, data_type, name;
+                    iss >> count_type >> data_type >> name;
+                    elements.back().properties.push_back({name, data_type, true, count_type});
                 } else {
+                    std::string name;
                     iss >> name;
                     elements.back().properties.push_back({name, type_or_list, false, ""});
                 }
@@ -191,10 +205,21 @@ private:
             
             if (format == Format::ASCII) {
                 std::string line;
-                std::getline(file, line);
+                if (!std::getline(file, line)) {
+                    break; // End of file
+                }
+                
                 std::istringstream iss(line);
+                std::size_t j = 0;
                 for (auto& value : values) {
-                    iss >> value;
+                    if (!(iss >> value)) {
+                        break; // Invalid value
+                    }
+                    ++j;
+                }
+                
+                if (j != values.size()) {
+                    continue; // Incomplete vertex data
                 }
             } else {
                 // Binary reading would go here
@@ -235,26 +260,37 @@ private:
         for (std::size_t i = 0; i < face_element.count; ++i) {
             if (format == Format::ASCII) {
                 std::string line;
-                std::getline(file, line);
-                std::istringstream iss(line);
-                
-                int count;
-                iss >> count;
-                
-                std::vector<core::VertexId> vertices;
-                for (int j = 0; j < count; ++j) {
-                    core::VertexId vertex_id;
-                    iss >> vertex_id;
-                    vertices.push_back(vertex_id);
+                if (!std::getline(file, line)) {
+                    break; // End of file
                 }
                 
-                if (vertices.size() >= 3) {
+                std::istringstream iss(line);
+                int count;
+                if (!(iss >> count) || count < 3) {
+                    continue; // Invalid face
+                }
+                
+                std::vector<core::VertexId> vertices;
+                vertices.reserve(count);
+                
+                for (int j = 0; j < count; ++j) {
+                    int vertex_id;
+                    if (!(iss >> vertex_id) || vertex_id < 0) {
+                        break; // Invalid vertex id
+                    }
+                    vertices.push_back(static_cast<core::VertexId>(vertex_id));
+                }
+                
+                if (vertices.size() == static_cast<std::size_t>(count) && vertices.size() >= 3) {
                     if (vertices.size() == 3) {
                         mesh.add_triangle(vertices[0], vertices[1], vertices[2]);
                     } else {
                         mesh.add_face(vertices);
                     }
                 }
+            } else {
+                // Binary reading would go here
+                // Simplified for this implementation
             }
         }
     }
@@ -281,16 +317,31 @@ private:
         file << "property float y\n";
         file << "property float z\n";
 
-        // Check if we have normals
+        // Check if we have normals (check all vertices to be safe)
+        bool has_normals = false;
         const auto& vertices = mesh.vertices();
-        bool has_normals = !vertices.empty() && vertices[0].has_normal();
+        for (std::size_t i = 0; i < vertices.size(); ++i) {
+            if (vertices[i].has_normal()) {
+                has_normals = true;
+                break;
+            }
+        }
+        
         if (has_normals) {
             file << "property float nx\n";
             file << "property float ny\n";
             file << "property float nz\n";
         }
 
-        bool has_uvs = !vertices.empty() && vertices[0].has_uv();
+        // Check if we have uvs (check all vertices to be safe)
+        bool has_uvs = false;
+        for (std::size_t i = 0; i < vertices.size(); ++i) {
+            if (vertices[i].has_uv()) {
+                has_uvs = true;
+                break;
+            }
+        }
+        
         if (has_uvs) {
             file << "property float u\n";
             file << "property float v\n";
@@ -304,25 +355,46 @@ private:
     template<typename T>
     static void write_ascii_data(std::ofstream& file, const core::Mesh<T>& mesh) {
         // Write vertices
-        for (const auto& vertex : mesh.vertices()) {
+        const auto& vertices = mesh.vertices();
+        
+        // Determine what properties to write by checking all vertices
+        bool write_normals = false;
+        bool write_uvs = false;
+        for (std::size_t i = 0; i < vertices.size(); ++i) {
+            if (vertices[i].has_normal()) write_normals = true;
+            if (vertices[i].has_uv()) write_uvs = true;
+        }
+        
+        for (std::size_t i = 0; i < vertices.size(); ++i) {
+            const auto& vertex = vertices[i];
             file << vertex.position.x << " " << vertex.position.y << " " << vertex.position.z;
             
-            if (vertex.has_normal()) {
-                file << " " << vertex.normal.x << " " << vertex.normal.y << " " << vertex.normal.z;
+            if (write_normals) {
+                if (vertex.has_normal()) {
+                    file << " " << vertex.normal.x << " " << vertex.normal.y << " " << vertex.normal.z;
+                } else {
+                    file << " 0.0 0.0 0.0";
+                }
             }
             
-            if (vertex.has_uv()) {
-                file << " " << vertex.uv.x << " " << vertex.uv.y;
+            if (write_uvs) {
+                if (vertex.has_uv()) {
+                    file << " " << vertex.uv.x << " " << vertex.uv.y;
+                } else {
+                    file << " 0.0 0.0";
+                }
             }
             
             file << "\n";
         }
 
         // Write faces
-        for (const auto& face : mesh.faces()) {
+        const auto& faces = mesh.faces();
+        for (std::size_t i = 0; i < faces.size(); ++i) {
+            const auto& face = faces[i];
             file << face.vertex_count();
-            for (auto vertex_id : face.vertices) {
-                file << " " << vertex_id;
+            for (std::size_t j = 0; j < face.vertices.size(); ++j) {
+                file << " " << face.vertices[j];
             }
             file << "\n";
         }
