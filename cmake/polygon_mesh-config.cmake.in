@@ -1,0 +1,12 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+# Find dependencies
+if(${CMAKE_VERSION} VERSION_LESS "3.5")
+    include("${CMAKE_CURRENT_LIST_DIR}/polygon_mesh-targets.cmake")
+else()
+    include("${CMAKE_CURRENT_LIST_DIR}/polygon_mesh-targets.cmake")
+endif()
+
+check_required_components(polygon_mesh)

@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/seung/Project/Polygon-mesh/build/cmake_install.cmake",
+		"C:/Users/seung/Project/Polygon-mesh/build/examples/cmake_install.cmake",
+		"C:/Users/seung/Project/Polygon-mesh/build/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

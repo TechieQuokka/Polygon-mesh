@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\cube_mesh.dir/objects.a
+C:\Users\seung\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\ar.exe qc CMakeFiles\cube_mesh.dir/objects.a @CMakeFiles\cube_mesh.dir\objects1.rsp
+C:\Users\seung\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\c++.exe -static -static-libgcc -static-libstdc++ -O3 -DNDEBUG -Wl,--whole-archive CMakeFiles\cube_mesh.dir/objects.a -Wl,--no-whole-archive -o cube_mesh.exe -Wl,--out-implib,libcube_mesh.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cube_mesh.dir\linkLibs.rsp
