@@ -11,6 +11,8 @@ C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/basic_triangle.dir
 C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/cube_mesh.dir
 C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/mesh_stats.dir
 C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/advanced_mesh.dir
+C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/comprehensive_demo.dir
+C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/matrix_demo.dir
 C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/package.dir
 C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/package_source.dir
 C:/Users/seung/Project/Polygon-mesh/build/examples/CMakeFiles/test.dir

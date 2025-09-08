@@ -89,6 +89,8 @@ examples/all: examples/CMakeFiles/basic_triangle.dir/all
 examples/all: examples/CMakeFiles/cube_mesh.dir/all
 examples/all: examples/CMakeFiles/mesh_stats.dir/all
 examples/all: examples/CMakeFiles/advanced_mesh.dir/all
+examples/all: examples/CMakeFiles/comprehensive_demo.dir/all
+examples/all: examples/CMakeFiles/matrix_demo.dir/all
 .PHONY : examples/all
 
 # Recursive "codegen" directory target.
@@ -96,6 +98,8 @@ examples/codegen: examples/CMakeFiles/basic_triangle.dir/codegen
 examples/codegen: examples/CMakeFiles/cube_mesh.dir/codegen
 examples/codegen: examples/CMakeFiles/mesh_stats.dir/codegen
 examples/codegen: examples/CMakeFiles/advanced_mesh.dir/codegen
+examples/codegen: examples/CMakeFiles/comprehensive_demo.dir/codegen
+examples/codegen: examples/CMakeFiles/matrix_demo.dir/codegen
 .PHONY : examples/codegen
 
 # Recursive "preinstall" directory target.
@@ -107,6 +111,8 @@ examples/clean: examples/CMakeFiles/basic_triangle.dir/clean
 examples/clean: examples/CMakeFiles/cube_mesh.dir/clean
 examples/clean: examples/CMakeFiles/mesh_stats.dir/clean
 examples/clean: examples/CMakeFiles/advanced_mesh.dir/clean
+examples/clean: examples/CMakeFiles/comprehensive_demo.dir/clean
+examples/clean: examples/CMakeFiles/matrix_demo.dir/clean
 .PHONY : examples/clean
 
 #=============================================================================
@@ -173,7 +179,7 @@ examples/CMakeFiles/basic_triangle.dir/clean:
 examples/CMakeFiles/cube_mesh.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\cube_mesh.dir\build.make examples/CMakeFiles/cube_mesh.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\cube_mesh.dir\build.make examples/CMakeFiles/cube_mesh.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=7,8 "Built target cube_mesh"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=9,10 "Built target cube_mesh"
 .PHONY : examples/CMakeFiles/cube_mesh.dir/all
 
 # Build rule for subdir invocation for target.
@@ -190,7 +196,7 @@ cube_mesh: examples/CMakeFiles/cube_mesh.dir/rule
 # codegen rule for target.
 examples/CMakeFiles/cube_mesh.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\cube_mesh.dir\build.make examples/CMakeFiles/cube_mesh.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=7,8 "Finished codegen for target cube_mesh"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=9,10 "Finished codegen for target cube_mesh"
 .PHONY : examples/CMakeFiles/cube_mesh.dir/codegen
 
 # clean rule for target.
@@ -205,7 +211,7 @@ examples/CMakeFiles/cube_mesh.dir/clean:
 examples/CMakeFiles/mesh_stats.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\mesh_stats.dir\build.make examples/CMakeFiles/mesh_stats.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\mesh_stats.dir\build.make examples/CMakeFiles/mesh_stats.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=9,10 "Built target mesh_stats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=13,14 "Built target mesh_stats"
 .PHONY : examples/CMakeFiles/mesh_stats.dir/all
 
 # Build rule for subdir invocation for target.
@@ -222,7 +228,7 @@ mesh_stats: examples/CMakeFiles/mesh_stats.dir/rule
 # codegen rule for target.
 examples/CMakeFiles/mesh_stats.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\mesh_stats.dir\build.make examples/CMakeFiles/mesh_stats.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=9,10 "Finished codegen for target mesh_stats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=13,14 "Finished codegen for target mesh_stats"
 .PHONY : examples/CMakeFiles/mesh_stats.dir/codegen
 
 # clean rule for target.
@@ -263,6 +269,70 @@ examples/CMakeFiles/advanced_mesh.dir/clean:
 .PHONY : examples/CMakeFiles/advanced_mesh.dir/clean
 
 #=============================================================================
+# Target rules for target examples/CMakeFiles/comprehensive_demo.dir
+
+# All Build rule for target.
+examples/CMakeFiles/comprehensive_demo.dir/all:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=7,8 "Built target comprehensive_demo"
+.PHONY : examples/CMakeFiles/comprehensive_demo.dir/all
+
+# Build rule for subdir invocation for target.
+examples/CMakeFiles/comprehensive_demo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 examples/CMakeFiles/comprehensive_demo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles 0
+.PHONY : examples/CMakeFiles/comprehensive_demo.dir/rule
+
+# Convenience name for target.
+comprehensive_demo: examples/CMakeFiles/comprehensive_demo.dir/rule
+.PHONY : comprehensive_demo
+
+# codegen rule for target.
+examples/CMakeFiles/comprehensive_demo.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=7,8 "Finished codegen for target comprehensive_demo"
+.PHONY : examples/CMakeFiles/comprehensive_demo.dir/codegen
+
+# clean rule for target.
+examples/CMakeFiles/comprehensive_demo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/clean
+.PHONY : examples/CMakeFiles/comprehensive_demo.dir/clean
+
+#=============================================================================
+# Target rules for target examples/CMakeFiles/matrix_demo.dir
+
+# All Build rule for target.
+examples/CMakeFiles/matrix_demo.dir/all:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=11,12 "Built target matrix_demo"
+.PHONY : examples/CMakeFiles/matrix_demo.dir/all
+
+# Build rule for subdir invocation for target.
+examples/CMakeFiles/matrix_demo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 examples/CMakeFiles/matrix_demo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles 0
+.PHONY : examples/CMakeFiles/matrix_demo.dir/rule
+
+# Convenience name for target.
+matrix_demo: examples/CMakeFiles/matrix_demo.dir/rule
+.PHONY : matrix_demo
+
+# codegen rule for target.
+examples/CMakeFiles/matrix_demo.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=11,12 "Finished codegen for target matrix_demo"
+.PHONY : examples/CMakeFiles/matrix_demo.dir/codegen
+
+# clean rule for target.
+examples/CMakeFiles/matrix_demo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/clean
+.PHONY : examples/CMakeFiles/matrix_demo.dir/clean
+
+#=============================================================================
 # Target rules for target tests/CMakeFiles/basic_test.dir
 
 # All Build rule for target.
@@ -301,7 +371,7 @@ tests/CMakeFiles/basic_test.dir/clean:
 tests/CMakeFiles/mesh_test.dir/all:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mesh_test.dir\build.make tests/CMakeFiles/mesh_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mesh_test.dir\build.make tests/CMakeFiles/mesh_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=11,12 "Built target mesh_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=15,16 "Built target mesh_test"
 .PHONY : tests/CMakeFiles/mesh_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -318,7 +388,7 @@ mesh_test: tests/CMakeFiles/mesh_test.dir/rule
 # codegen rule for target.
 tests/CMakeFiles/mesh_test.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mesh_test.dir\build.make tests/CMakeFiles/mesh_test.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=11,12 "Finished codegen for target mesh_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=15,16 "Finished codegen for target mesh_test"
 .PHONY : tests/CMakeFiles/mesh_test.dir/codegen
 
 # clean rule for target.
@@ -333,7 +403,7 @@ tests/CMakeFiles/mesh_test.dir/clean:
 tests/CMakeFiles/performance_test.dir/all:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\performance_test.dir\build.make tests/CMakeFiles/performance_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\performance_test.dir\build.make tests/CMakeFiles/performance_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=13,14 "Built target performance_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=17,18 "Built target performance_test"
 .PHONY : tests/CMakeFiles/performance_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -350,7 +420,7 @@ performance_test: tests/CMakeFiles/performance_test.dir/rule
 # codegen rule for target.
 tests/CMakeFiles/performance_test.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\performance_test.dir\build.make tests/CMakeFiles/performance_test.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=13,14 "Finished codegen for target performance_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\seung\Project\Polygon-mesh\build\CMakeFiles --progress-num=17,18 "Finished codegen for target performance_test"
 .PHONY : tests/CMakeFiles/performance_test.dir/codegen
 
 # clean rule for target.

@@ -243,6 +243,32 @@ advanced_mesh/fast:
 .PHONY : advanced_mesh/fast
 
 #=============================================================================
+# Target rules for targets named comprehensive_demo
+
+# Build rule for target.
+comprehensive_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 comprehensive_demo
+.PHONY : comprehensive_demo
+
+# fast build rule for target.
+comprehensive_demo/fast:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/build
+.PHONY : comprehensive_demo/fast
+
+#=============================================================================
+# Target rules for targets named matrix_demo
+
+# Build rule for target.
+matrix_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 matrix_demo
+.PHONY : matrix_demo
+
+# fast build rule for target.
+matrix_demo/fast:
+	$(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/build
+.PHONY : matrix_demo/fast
+
+#=============================================================================
 # Target rules for targets named basic_test
 
 # Build rule for target.
@@ -299,7 +325,9 @@ help:
 	@echo ... advanced_mesh
 	@echo ... basic_test
 	@echo ... basic_triangle
+	@echo ... comprehensive_demo
 	@echo ... cube_mesh
+	@echo ... matrix_demo
 	@echo ... mesh_stats
 	@echo ... mesh_test
 	@echo ... performance_test

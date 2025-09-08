@@ -70,6 +70,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "examples/CMakeFiles/cube_mesh.dir/DependInfo.cmake"
   "examples/CMakeFiles/mesh_stats.dir/DependInfo.cmake"
   "examples/CMakeFiles/advanced_mesh.dir/DependInfo.cmake"
+  "examples/CMakeFiles/comprehensive_demo.dir/DependInfo.cmake"
+  "examples/CMakeFiles/matrix_demo.dir/DependInfo.cmake"
   "tests/CMakeFiles/basic_test.dir/DependInfo.cmake"
   "tests/CMakeFiles/mesh_test.dir/DependInfo.cmake"
   "tests/CMakeFiles/performance_test.dir/DependInfo.cmake"

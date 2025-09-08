@@ -246,6 +246,34 @@ advanced_mesh/fast:
 	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\advanced_mesh.dir\build.make examples/CMakeFiles/advanced_mesh.dir/build
 .PHONY : advanced_mesh/fast
 
+# Convenience name for target.
+examples/CMakeFiles/comprehensive_demo.dir/rule:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 examples/CMakeFiles/comprehensive_demo.dir/rule
+.PHONY : examples/CMakeFiles/comprehensive_demo.dir/rule
+
+# Convenience name for target.
+comprehensive_demo: examples/CMakeFiles/comprehensive_demo.dir/rule
+.PHONY : comprehensive_demo
+
+# fast build rule for target.
+comprehensive_demo/fast:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/build
+.PHONY : comprehensive_demo/fast
+
+# Convenience name for target.
+examples/CMakeFiles/matrix_demo.dir/rule:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 examples/CMakeFiles/matrix_demo.dir/rule
+.PHONY : examples/CMakeFiles/matrix_demo.dir/rule
+
+# Convenience name for target.
+matrix_demo: examples/CMakeFiles/matrix_demo.dir/rule
+.PHONY : matrix_demo
+
+# fast build rule for target.
+matrix_demo/fast:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/build
+.PHONY : matrix_demo/fast
+
 advanced_mesh.obj: advanced_mesh.cpp.obj
 .PHONY : advanced_mesh.obj
 
@@ -294,6 +322,30 @@ basic_triangle.cpp.s:
 	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\basic_triangle.dir\build.make examples/CMakeFiles/basic_triangle.dir/basic_triangle.cpp.s
 .PHONY : basic_triangle.cpp.s
 
+comprehensive_demo.obj: comprehensive_demo.cpp.obj
+.PHONY : comprehensive_demo.obj
+
+# target to build an object file
+comprehensive_demo.cpp.obj:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/comprehensive_demo.cpp.obj
+.PHONY : comprehensive_demo.cpp.obj
+
+comprehensive_demo.i: comprehensive_demo.cpp.i
+.PHONY : comprehensive_demo.i
+
+# target to preprocess a source file
+comprehensive_demo.cpp.i:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/comprehensive_demo.cpp.i
+.PHONY : comprehensive_demo.cpp.i
+
+comprehensive_demo.s: comprehensive_demo.cpp.s
+.PHONY : comprehensive_demo.s
+
+# target to generate assembly for a file
+comprehensive_demo.cpp.s:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\comprehensive_demo.dir\build.make examples/CMakeFiles/comprehensive_demo.dir/comprehensive_demo.cpp.s
+.PHONY : comprehensive_demo.cpp.s
+
 cube_mesh.obj: cube_mesh.cpp.obj
 .PHONY : cube_mesh.obj
 
@@ -317,6 +369,30 @@ cube_mesh.s: cube_mesh.cpp.s
 cube_mesh.cpp.s:
 	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\cube_mesh.dir\build.make examples/CMakeFiles/cube_mesh.dir/cube_mesh.cpp.s
 .PHONY : cube_mesh.cpp.s
+
+matrix_demo.obj: matrix_demo.cpp.obj
+.PHONY : matrix_demo.obj
+
+# target to build an object file
+matrix_demo.cpp.obj:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/matrix_demo.cpp.obj
+.PHONY : matrix_demo.cpp.obj
+
+matrix_demo.i: matrix_demo.cpp.i
+.PHONY : matrix_demo.i
+
+# target to preprocess a source file
+matrix_demo.cpp.i:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/matrix_demo.cpp.i
+.PHONY : matrix_demo.cpp.i
+
+matrix_demo.s: matrix_demo.cpp.s
+.PHONY : matrix_demo.s
+
+# target to generate assembly for a file
+matrix_demo.cpp.s:
+	cd /d C:\Users\seung\Project\Polygon-mesh\build && $(MAKE) $(MAKESILENT) -f examples\CMakeFiles\matrix_demo.dir\build.make examples/CMakeFiles/matrix_demo.dir/matrix_demo.cpp.s
+.PHONY : matrix_demo.cpp.s
 
 mesh_stats.obj: mesh_stats.cpp.obj
 .PHONY : mesh_stats.obj
@@ -359,7 +435,9 @@ help:
 	@echo ... test
 	@echo ... advanced_mesh
 	@echo ... basic_triangle
+	@echo ... comprehensive_demo
 	@echo ... cube_mesh
+	@echo ... matrix_demo
 	@echo ... mesh_stats
 	@echo ... advanced_mesh.obj
 	@echo ... advanced_mesh.i
@@ -367,9 +445,15 @@ help:
 	@echo ... basic_triangle.obj
 	@echo ... basic_triangle.i
 	@echo ... basic_triangle.s
+	@echo ... comprehensive_demo.obj
+	@echo ... comprehensive_demo.i
+	@echo ... comprehensive_demo.s
 	@echo ... cube_mesh.obj
 	@echo ... cube_mesh.i
 	@echo ... cube_mesh.s
+	@echo ... matrix_demo.obj
+	@echo ... matrix_demo.i
+	@echo ... matrix_demo.s
 	@echo ... mesh_stats.obj
 	@echo ... mesh_stats.i
 	@echo ... mesh_stats.s
