@@ -11,6 +11,15 @@ if(MSVC)
     add_compile_options(/W4)
 else()
     add_compile_options(-Wall -Wextra -Wpedantic)
+    
+    # Fix for MinGW clock_gettime64 DLL issue - use complete static linking
+    if(WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        # Force static linking of all MinGW runtime libraries
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++ -static -lpthread")
+        set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -static-libgcc -static-libstdc++ -static -lpthread")
+        add_compile_definitions(_WIN32_WINNT=0x0601)  # Windows 7+
+        message(STATUS "MinGW detected - using complete static linking with pthread")
+    endif()
 endif()
 
 # Build type
