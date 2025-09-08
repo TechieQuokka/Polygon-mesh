@@ -55,7 +55,8 @@
       "Bash(./working_ply_test.exe)",
       "Bash(./debug_step_test.exe)",
       "Bash(./stable_demo.exe)",
-      "Bash(./primitives_demo.exe)"
+      "Bash(./primitives_demo.exe)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
